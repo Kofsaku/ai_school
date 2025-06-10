@@ -59,44 +59,98 @@ export default function CoreProblemSection() {
 
       <motion.div className="relative z-10 max-w-3xl mx-auto text-center px-4 space-y-12" style={{ y, opacity }}>
         <div className="space-y-12">
-          <h2 className="text-3xl md:text-5xl font-bold">
+          <motion.h2 
+            className="text-3xl md:text-5xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             ツールは溢れているのに、
             <br />
             サービスが生まれない理由。
-          </h2>
+          </motion.h2>
 
-          <p className="text-xl md:text-2xl mt-8">
+          <motion.p 
+            className="text-xl md:text-2xl mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             ツールは使える。でも、なぜサービスは生まれないのか？
-          </p>
+          </motion.p>
 
-          <ul className="text-lg md:text-xl space-y-6 text-left max-w-2xl mx-auto">
-            <li className="flex items-start">
-              <span className="mr-3">•</span>
+          <motion.ul 
+            className="text-xl md:text-2xl space-y-8 text-left max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
               <span>ツールは使えるが、何を作れば価値があるのかがわからない</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3">•</span>
+            </motion.li>
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
               <span>ユーザーの課題を深く理解して形にする方法が学べていない</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3">•</span>
+            </motion.li>
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
               <span>プロダクトとしての価値提案の作り方がわからない</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3">•</span>
+            </motion.li>
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
               <span>実装ばかり先行して、設計とユーザーフィードバックが不足する</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3">•</span>
+            </motion.li>
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
               <span>プロダクトを成長させるための戦略設計がわからない</span>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
 
-          <p className="text-xl md:text-3xl mt-12 text-green-400">
+          <motion.p 
+            className="text-xl md:text-3xl mt-12 text-green-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
             それは、「プロダクトの作り方」が
             <br />
             どこにも教えられていないからです。
-          </p>
+          </motion.p>
         </div>
       </motion.div>
     </section>
