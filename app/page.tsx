@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import dynamic from 'next/dynamic'
 import { useInView } from "react-intersection-observer"
 
@@ -26,19 +26,26 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [showFloatingCTA, setShowFloatingCTA] = useState(false)
   const { ref: topSectionRef, inView: topSectionInView } = useInView()
+  const ticking = useRef(false)
+
+  const handleScroll = useCallback(() => {
+    if (!ticking.current) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > window.innerHeight) {
+          setShowFloatingCTA(true)
+        } else {
+          setShowFloatingCTA(false)
+        }
+        ticking.current = false
+      })
+      ticking.current = true
+    }
+  }, [])
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > window.innerHeight) {
-        setShowFloatingCTA(true)
-      } else {
-        setShowFloatingCTA(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [handleScroll])
 
   return (
     <main className="relative overflow-hidden bg-black text-white">
