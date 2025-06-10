@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useMemo } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Clock, Users, MessageSquare, Palette, Zap, Star } from "lucide-react"
 
@@ -14,7 +14,8 @@ export default function ServiceHighlightsSection() {
   const y = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
-  const highlights = [
+  // メモ化されたハイライトデータ
+  const highlights = useMemo(() => [
     {
       icon: <Clock className="w-8 h-8" />,
       title: "8週間完成保証",
@@ -63,46 +64,55 @@ export default function ServiceHighlightsSection() {
       description: "プロダクトの品質向上支援",
       color: "from-amber-600 to-amber-400",
     },
-  ]
+  ], [])
 
-  // Enhanced background particles
-  const particles = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 6 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 8 + 5,
-    delay: Math.random() * 3,
-  }))
+  // メモ化されたパーティクルデータ
+  const particles = useMemo(() => [
+    { width: 3.1, height: 3.1, left: "67.1%", top: "29.3%" },
+    { width: 5.9, height: 5.9, left: "60.1%", top: "26.1%" },
+    { width: 5.7, height: 5.7, left: "96.6%", top: "57.7%" },
+    { width: 5.4, height: 5.4, left: "91.2%", top: "69.6%" },
+    { width: 4.2, height: 4.2, left: "65.3%", top: "4.8%" },
+    { width: 5.3, height: 5.3, left: "25.2%", top: "81.2%" },
+    { width: 5.6, height: 5.6, left: "48.6%", top: "16.3%" },
+    { width: 5.2, height: 5.2, left: "90.4%", top: "73.0%" },
+    { width: 4.7, height: 4.7, left: "92.2%", top: "94.2%" },
+    { width: 3.4, height: 3.4, left: "55.2%", top: "16.5%" },
+    { width: 2.0, height: 2.0, left: "44.3%", top: "0.2%" },
+    { width: 5.6, height: 5.6, left: "33.3%", top: "28.2%" },
+    { width: 3.1, height: 3.1, left: "18.8%", top: "95.8%" },
+    { width: 2.9, height: 2.9, left: "39.3%", top: "99.4%" },
+    { width: 2.6, height: 2.6, left: "46.9%", top: "10.2%" }
+  ], [])
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
-      {/* Enhanced particle background */}
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-green-400/30 to-blue-400/30"
-          style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-          }}
-          animate={{
-            y: [0, -50, 0],
-            x: [0, Math.sin(particle.id) * 30, 0],
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0.8, 0.3],
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      {/* パーティクルエフェクト */}
+      <div className="absolute inset-0">
+        {particles.map((particle, index) => (
+          <motion.div
+            key={`particle-${index}`}
+            className="absolute rounded-full bg-gradient-to-r from-green-400/20 to-blue-400/20"
+            style={{
+              width: particle.width,
+              height: particle.height,
+              left: particle.left,
+              top: particle.top,
+              willChange: 'transform'
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 4 + index * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
 
       <motion.div className="relative z-10 max-w-5xl mx-auto px-4 space-y-16" style={{ y, opacity }}>
         <motion.div
@@ -122,10 +132,11 @@ export default function ServiceHighlightsSection() {
               backgroundSize: "200% 100%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
+              willChange: 'background-position'
             }}
             transition={{
               duration: 4,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: Infinity,
               ease: "linear",
             }}
           >
@@ -166,41 +177,43 @@ export default function ServiceHighlightsSection() {
               />
 
               {/* Floating stars around the card */}
-              {[...Array(3)].map((_, starIndex) => (
+              {[...Array(2)].map((_, starIndex) => (
                 <motion.div
                   key={starIndex}
                   className="absolute"
                   style={{
                     top: `${20 + starIndex * 30}%`,
                     right: `${10 + starIndex * 15}%`,
+                    willChange: 'transform, opacity'
                   }}
                   animate={{
-                    rotate: [0, 360],
-                    scale: [0.5, 1, 0.5],
-                    opacity: [0.3, 0.8, 0.3],
+                    rotate: [0, 180],
+                    scale: [0.5, 0.8, 0.5],
+                    opacity: [0.2, 0.5, 0.2],
                   }}
                   transition={{
-                    duration: 3 + starIndex,
-                    delay: starIndex * 0.5,
-                    repeat: Number.POSITIVE_INFINITY,
+                    duration: 2 + starIndex,
+                    delay: starIndex * 0.3,
+                    repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 >
-                  <Star className="w-3 h-3 text-green-400" />
+                  <Star className="w-2 h-2 text-green-400" />
                 </motion.div>
               ))}
 
               <motion.div
                 className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${highlight.color} flex items-center justify-center text-white relative z-10`}
                 animate={{
-                  rotate: [0, 360],
+                  rotate: [0, 180],
                 }}
+                style={{ willChange: 'transform' }}
                 transition={{
-                  duration: 8 + index * 2,
-                  repeat: Number.POSITIVE_INFINITY,
+                  duration: 6 + index,
+                  repeat: Infinity,
                   ease: "linear",
                 }}
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.1 }}
               >
                 {highlight.icon}
                 <motion.div
@@ -212,9 +225,10 @@ export default function ServiceHighlightsSection() {
                       "0 0 0 0 rgba(34, 197, 94, 0)",
                     ],
                   }}
+                  style={{ willChange: 'box-shadow' }}
                   transition={{
                     duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                   }}
                 />
               </motion.div>
@@ -229,10 +243,11 @@ export default function ServiceHighlightsSection() {
                   opacity: [0, 1, 0],
                   scale: [0.8, 1.2, 0.8],
                 }}
+                style={{ willChange: 'transform, opacity' }}
                 transition={{
                   duration: 2,
                   delay: index * 0.5,
-                  repeat: Number.POSITIVE_INFINITY,
+                  repeat: Infinity,
                   ease: "easeInOut",
                 }}
               >
@@ -263,9 +278,10 @@ export default function ServiceHighlightsSection() {
                   "radial-gradient(circle at 20% 50%, #22c55e 0%, transparent 60%)",
                 ],
               }}
+              style={{ willChange: 'background' }}
               transition={{
                 duration: 4,
-                repeat: Number.POSITIVE_INFINITY,
+                repeat: Infinity,
                 ease: "easeInOut",
               }}
             />
@@ -279,9 +295,10 @@ export default function ServiceHighlightsSection() {
                   "0 0 20px #22c55e, 0 0 40px #3b82f6",
                 ],
               }}
+              style={{ willChange: 'transform, text-shadow' }}
               transition={{
                 duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
+                repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
@@ -293,9 +310,10 @@ export default function ServiceHighlightsSection() {
                   scaleX: [1, 1.2, 1],
                   opacity: [0.7, 1, 0.7],
                 }}
+                style={{ willChange: 'transform, opacity' }}
                 transition={{
                   duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
+                  repeat: Infinity,
                   ease: "easeInOut",
                 }}
               />

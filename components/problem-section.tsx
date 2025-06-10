@@ -23,6 +23,29 @@ export default function ProblemSection() {
     { icon: "🧩", delay: 0.8, path: "M 0,0 Q 40,40 80,0 T 160,0" },
   ]
 
+  // 固定の位置とサイズを使用
+  const stars = [
+    { left: "53.4%", top: "77.9%" },
+    { left: "71.9%", top: "6.0%" },
+    { left: "14.2%", top: "14.5%" },
+    { left: "90.8%", top: "84.2%" },
+    { left: "59.4%", top: "16.0%" },
+    { left: "92.8%", top: "43.6%" },
+    { left: "7.3%", top: "17.3%" },
+    { left: "46.8%", top: "73.9%" }
+  ]
+
+  const particles = [
+    { width: 5.0, height: 5.0, left: "66.5%", top: "68.6%" },
+    { width: 5.1, height: 5.1, left: "89.2%", top: "45.2%" },
+    { width: 3.8, height: 3.8, left: "38.4%", top: "98.9%" },
+    { width: 3.0, height: 3.0, left: "11.6%", top: "93.3%" },
+    { width: 3.8, height: 3.8, left: "23.5%", top: "72.5%" },
+    { width: 2.8, height: 2.8, left: "63.1%", top: "50.3%" },
+    { width: 3.6, height: 3.6, left: "89.2%", top: "8.2%" },
+    { width: 5.2, height: 5.2, left: "60.4%", top: "31.8%" }
+  ]
+
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center py-20">
       {/* Enhanced floating background elements */}
@@ -62,28 +85,57 @@ export default function ProblemSection() {
         </motion.div>
       ))}
 
-      {/* Particle effects */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-green-400 rounded-full opacity-30"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -100, 0],
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: Math.random() * 5 + 5,
-            delay: Math.random() * 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+      {/* 背景の星 */}
+      <div className="absolute inset-0">
+        {stars.map((star, index) => (
+          <motion.div
+            key={`star-${index}`}
+            className="absolute w-2 h-2 bg-green-400 rounded-full opacity-30"
+            style={{
+              left: star.left,
+              top: star.top,
+              willChange: 'transform, opacity'
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 3 + index * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* パーティクルエフェクト */}
+      <div className="absolute inset-0">
+        {particles.map((particle, index) => (
+          <motion.div
+            key={`particle-${index}`}
+            className="absolute rounded-full bg-gradient-to-r from-green-400/20 to-blue-400/20"
+            style={{
+              width: particle.width,
+              height: particle.height,
+              left: particle.left,
+              top: particle.top,
+              willChange: 'transform'
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: 4 + index * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
 
       <motion.div className="relative z-10 max-w-3xl mx-auto text-center px-4 space-y-12" style={{ y, opacity }}>
         <motion.h2
