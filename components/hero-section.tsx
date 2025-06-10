@@ -124,7 +124,7 @@ export default function HeroSection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              あなたのアイデアが、
+              あなたのアイデアを
             </motion.span>
             <br />
             <motion.span
@@ -133,7 +133,7 @@ export default function HeroSection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              宇宙を旅してプロダクトになる。
+              8週間でプロダクトに
             </motion.span>
           </h1>
         </motion.div>
