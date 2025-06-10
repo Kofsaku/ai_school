@@ -58,25 +58,20 @@ const nextConfig = {
             priority: -20,
             reuseExistingChunk: true,
           },
+          // アニメーション関連のチャンクを分離
+          animations: {
+            test: /[\\/]node_modules[\\/](framer-motion|lucide-react)[\\/]/,
+            name: 'animations',
+            priority: 20,
+            reuseExistingChunk: true,
+          },
         },
       }
     }
-
-    // アニメーション関連のパッケージを最適化
-    config.module.rules.push({
-      test: /\.(mjs|js|jsx|ts|tsx)$/,
-      include: /node_modules\/(framer-motion|lucide-react)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['next/babel'],
-          plugins: ['@babel/plugin-transform-runtime'],
-        },
-      },
-    })
 
     return config
   },
 }
 
+module.exports = nextConfig 
 module.exports = nextConfig 
