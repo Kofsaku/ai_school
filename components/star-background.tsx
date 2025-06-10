@@ -7,8 +7,15 @@ export default function StarBackground() {
   const [stars, setStars] = useState<
     { id: number; size: number; top: string; left: string; delay: number; duration: number }[]
   >([])
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
+    // Set initial window size
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+
     // Generate random stars with enhanced properties
     const generateStars = () => {
       const newStars = []
@@ -27,11 +34,19 @@ export default function StarBackground() {
       setStars(newStars)
     }
 
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+      generateStars()
+    }
+
     generateStars()
-    window.addEventListener("resize", generateStars)
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener("resize", generateStars)
+      window.removeEventListener("resize", handleResize)
     }
   }, [])
 
@@ -62,7 +77,7 @@ export default function StarBackground() {
       ))}
 
       {/* Shooting stars */}
-      {[...Array(3)].map((_, i) => (
+      {windowSize.width > 0 && [...Array(3)].map((_, i) => (
         <motion.div
           key={`shooting-${i}`}
           className="absolute w-1 h-1 bg-green-400 rounded-full"
@@ -71,7 +86,7 @@ export default function StarBackground() {
             left: "-10px",
           }}
           animate={{
-            x: [0, window.innerWidth + 100],
+            x: [0, windowSize.width + 100],
             y: [0, Math.random() * 200 - 100],
             opacity: [0, 1, 0],
           }}
