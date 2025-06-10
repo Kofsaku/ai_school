@@ -86,6 +86,16 @@ export default function ProblemSection() {
       ))}
 
       <motion.div className="relative z-10 max-w-3xl mx-auto text-center px-4 space-y-12" style={{ y, opacity }}>
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold mb-12"
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          こんな悩み、ありませんか？
+        </motion.h2>
+
         <motion.div
           className="space-y-4"
           initial={{ scale: 0, rotate: -10 }}
@@ -145,16 +155,43 @@ export default function ProblemSection() {
             transition={{ delay: 0.8, duration: 0.8, ease: "backOut" }}
             viewport={{ once: true }}
           >
-            「どうやってプロダクトにすればいいのか、全然わからない」
+            「どうやってサービスとして形にすればいいかわからなかった」
+          </motion.p>
+          <motion.p
+            className="text-2xl md:text-4xl font-bold text-green-400"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+            viewport={{ once: true }}
+          >
+            「途中まで作ったが事業としての方向性が見えなかった」
+          </motion.p>
+          <motion.p
+            className="text-2xl md:text-4xl font-bold text-green-400"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+            viewport={{ once: true }}
+          >
+            「ユーザーの声をどう取り入れればいいか迷った」
+          </motion.p>
+          <motion.p
+            className="text-2xl md:text-4xl font-bold text-green-400"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+            viewport={{ once: true }}
+          >
+            「ローンチまでのステップがわからず挫折してしまった」
           </motion.p>
           <motion.p
             className="text-xl md:text-2xl mt-8"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            そんな方が、今ものすごく増えています。
+            そんな声が今とても増えています。
           </motion.p>
         </motion.div>
       </motion.div>

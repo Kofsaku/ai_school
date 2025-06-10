@@ -58,14 +58,41 @@ export default function CoreProblemSection() {
       </div>
 
       <motion.div className="relative z-10 max-w-3xl mx-auto text-center px-4 space-y-12" style={{ y, opacity }}>
-        <div className="space-y-8">
+        <div className="space-y-12">
           <h2 className="text-3xl md:text-5xl font-bold">
             ツールは溢れているのに、
             <br />
             サービスが生まれない理由。
           </h2>
 
-          <p className="text-xl md:text-3xl mt-8 text-green-400">
+          <p className="text-xl md:text-2xl mt-8">
+            ツールは使える。でも、なぜサービスは生まれないのか？
+          </p>
+
+          <ul className="text-lg md:text-xl space-y-6 text-left max-w-2xl mx-auto">
+            <li className="flex items-start">
+              <span className="mr-3">•</span>
+              <span>ツールは使えるが、何を作れば価値があるのかがわからない</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3">•</span>
+              <span>ユーザーの課題を深く理解して形にする方法が学べていない</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3">•</span>
+              <span>プロダクトとしての価値提案の作り方がわからない</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3">•</span>
+              <span>実装ばかり先行して、設計とユーザーフィードバックが不足する</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3">•</span>
+              <span>プロダクトを成長させるための戦略設計がわからない</span>
+            </li>
+          </ul>
+
+          <p className="text-xl md:text-3xl mt-12 text-green-400">
             それは、「プロダクトの作り方」が
             <br />
             どこにも教えられていないからです。
