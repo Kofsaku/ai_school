@@ -267,13 +267,14 @@ export default function CTASection() {
       {/* 背景の宇宙要素 */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* きらめく星 */}
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={`star-${i}`}
             className="absolute w-1 h-1 bg-white rounded-full"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
+              willChange: 'transform, opacity'
             }}
             animate={{
               opacity: [0.3, 1, 0.3],
@@ -291,6 +292,9 @@ export default function CTASection() {
         {/* 遠くの惑星 */}
         <motion.div
           className="absolute top-20 right-20 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-30"
+          style={{
+            willChange: 'transform'
+          }}
           animate={{
             rotate: [0, 360],
             scale: [1, 1.1, 1],

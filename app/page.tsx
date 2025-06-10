@@ -1,23 +1,26 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import HeroSection from "@/components/hero-section"
-import ProblemSection from "@/components/problem-section"
-import CoreProblemSection from "@/components/core-problem-section"
-import SolutionSection from "@/components/solution-section"
-import LearningStepsSection from "@/components/learning-steps-section"
-import WhyAISection from "@/components/why-ai-section"
-import PersonaSection from "@/components/persona-section"
-import TestimonialsSection from "@/components/testimonials-section"
-import PricingSection from "@/components/pricing-section"
-import CTASection from "@/components/cta-section"
-import FloatingCTA from "@/components/floating-cta"
+import dynamic from 'next/dynamic'
 import { useInView } from "react-intersection-observer"
-import StarBackground from "@/components/star-background"
-// 新しい比較セクションを追加
-import ComparisonSection from "@/components/comparison-section"
-// 新しいサービスハイライトセクションを追加
-import ServiceHighlightsSection from "@/components/service-highlights-section"
+
+// Dynamically import components
+const HeroSection = dynamic(() => import('@/components/hero-section'), {
+  loading: () => <div className="min-h-screen" />
+})
+const ProblemSection = dynamic(() => import('@/components/problem-section'))
+const CoreProblemSection = dynamic(() => import('@/components/core-problem-section'))
+const SolutionSection = dynamic(() => import('@/components/solution-section'))
+const LearningStepsSection = dynamic(() => import('@/components/learning-steps-section'))
+const WhyAISection = dynamic(() => import('@/components/why-ai-section'))
+const ComparisonSection = dynamic(() => import('@/components/comparison-section'))
+const PersonaSection = dynamic(() => import('@/components/persona-section'))
+const ServiceHighlightsSection = dynamic(() => import('@/components/service-highlights-section'))
+const TestimonialsSection = dynamic(() => import('@/components/testimonials-section'))
+const PricingSection = dynamic(() => import('@/components/pricing-section'))
+const CTASection = dynamic(() => import('@/components/cta-section'))
+const FloatingCTA = dynamic(() => import('@/components/floating-cta'))
+const StarBackground = dynamic(() => import('@/components/star-background'))
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -48,7 +51,6 @@ export default function Home() {
         <SolutionSection />
         <LearningStepsSection />
         <WhyAISection />
-        {/* ComparisonSectionをWhyAISectionの後に追加 */}
         <ComparisonSection />
         <PersonaSection />
         <ServiceHighlightsSection />

@@ -74,7 +74,7 @@ export default function ComparisonSection() {
   const competitors = ["一般的なAIスクール（A社）", "ノーコードスクール（B社）", "プログラミングスクール（C社）"]
 
   // Background animated elements
-  const backgroundElements = Array.from({ length: 8 }, (_, i) => ({
+  const backgroundElements = Array.from({ length: 4 }, (_, i) => ({
     id: i,
     size: Math.random() * 60 + 20,
     x: Math.random() * 100,
@@ -95,6 +95,7 @@ export default function ComparisonSection() {
             height: element.size,
             left: `${element.x}%`,
             top: `${element.y}%`,
+            willChange: 'transform, opacity'
           }}
           animate={{
             scale: [1, 1.5, 1],

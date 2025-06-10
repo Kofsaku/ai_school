@@ -66,13 +66,13 @@ export default function ServiceHighlightsSection() {
   ]
 
   // Enhanced background particles
-  const particles = Array.from({ length: 30 }, (_, i) => ({
+  const particles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
-    size: Math.random() * 6 + 2,
+    size: Math.random() * 4 + 2,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    duration: Math.random() * 8 + 5,
-    delay: Math.random() * 3,
+    duration: Math.random() * 6 + 4,
+    delay: Math.random() * 2,
   }))
 
   return (
@@ -81,7 +81,7 @@ export default function ServiceHighlightsSection() {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-green-400/30 to-blue-400/30"
+          className="absolute rounded-full bg-gradient-to-r from-green-400/20 to-blue-400/20"
           style={{
             width: particle.size,
             height: particle.size,
@@ -89,11 +89,10 @@ export default function ServiceHighlightsSection() {
             top: `${particle.y}%`,
           }}
           animate={{
-            y: [0, -50, 0],
-            x: [0, Math.sin(particle.id) * 30, 0],
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0.8, 0.3],
-            rotate: [0, 360],
+            y: [0, -30, 0],
+            x: [0, Math.sin(particle.id) * 20, 0],
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.5, 0.2],
           }}
           transition={{
             duration: particle.duration,
@@ -166,7 +165,7 @@ export default function ServiceHighlightsSection() {
               />
 
               {/* Floating stars around the card */}
-              {[...Array(3)].map((_, starIndex) => (
+              {[...Array(2)].map((_, starIndex) => (
                 <motion.div
                   key={starIndex}
                   className="absolute"
@@ -175,32 +174,32 @@ export default function ServiceHighlightsSection() {
                     right: `${10 + starIndex * 15}%`,
                   }}
                   animate={{
-                    rotate: [0, 360],
-                    scale: [0.5, 1, 0.5],
-                    opacity: [0.3, 0.8, 0.3],
+                    rotate: [0, 180],
+                    scale: [0.5, 0.8, 0.5],
+                    opacity: [0.2, 0.5, 0.2],
                   }}
                   transition={{
-                    duration: 3 + starIndex,
-                    delay: starIndex * 0.5,
+                    duration: 2 + starIndex,
+                    delay: starIndex * 0.3,
                     repeat: Number.POSITIVE_INFINITY,
                     ease: "easeInOut",
                   }}
                 >
-                  <Star className="w-3 h-3 text-green-400" />
+                  <Star className="w-2 h-2 text-green-400" />
                 </motion.div>
               ))}
 
               <motion.div
                 className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${highlight.color} flex items-center justify-center text-white relative z-10`}
                 animate={{
-                  rotate: [0, 360],
+                  rotate: [0, 180],
                 }}
                 transition={{
-                  duration: 8 + index * 2,
+                  duration: 6 + index,
                   repeat: Number.POSITIVE_INFINITY,
                   ease: "linear",
                 }}
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.1 }}
               >
                 {highlight.icon}
                 <motion.div
