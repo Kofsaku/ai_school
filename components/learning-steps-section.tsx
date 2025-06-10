@@ -48,7 +48,11 @@ export default function LearningStepsSection() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center py-20">
       <motion.div className="relative z-10 max-w-4xl mx-auto px-4 space-y-16" style={{ y, opacity }}>
         <div className="text-center space-y-6">
-          <h2 className="text-3xl md:text-5xl font-bold">学習の流れ - アイデアから事業化までのステップ</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">
+            事業アイデアから
+            <br />
+            サービスローンチまでのステップ
+          </h2>
         </div>
 
         <div className="relative">
@@ -59,7 +63,7 @@ export default function LearningStepsSection() {
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                className="relative flex flex-col md:flex-row items-center md:items-start gap-8"
+                className="relative flex flex-col md:flex-row items-center md:items-center gap-8"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -86,7 +90,19 @@ export default function LearningStepsSection() {
           </div>
         </div>
 
-        <div className="text-center text-xl md:text-2xl font-medium text-green-400">全部、伴走付きで進められます。</div>
+        <motion.div 
+          className="text-center text-2xl md:text-3xl font-bold relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative bg-black/90 border-2 border-green-400 rounded-2xl p-6 md:p-8 shadow-lg">
+            <span className="text-white">
+              全部、伴走付きで進められます。
+            </span>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   )

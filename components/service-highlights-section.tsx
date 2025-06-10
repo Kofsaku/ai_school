@@ -39,6 +39,30 @@ export default function ServiceHighlightsSection() {
       description: "Miro・リーンキャンバス等",
       color: "from-orange-600 to-orange-400",
     },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "ユーザーテストサポート",
+      description: "実際のユーザーからのフィードバック収集",
+      color: "from-pink-600 to-pink-400",
+    },
+    {
+      icon: <Palette className="w-8 h-8" />,
+      title: "開発ロードマップ提供",
+      description: "完成までのステップを明確化",
+      color: "from-indigo-600 to-indigo-400",
+    },
+    {
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: "MVPのレビュー",
+      description: "次フェーズへの提案付き",
+      color: "from-cyan-600 to-cyan-400",
+    },
+    {
+      icon: <Star className="w-8 h-8" />,
+      title: "成果物レビュー",
+      description: "プロダクトの品質向上支援",
+      color: "from-amber-600 to-amber-400",
+    },
   ]
 
   // Enhanced background particles
@@ -219,21 +243,24 @@ export default function ServiceHighlightsSection() {
         </div>
 
         <motion.div
-          className="bg-gradient-to-r from-green-600/20 to-blue-600/20 p-px rounded-2xl"
+          className="relative bg-gradient-to-br from-green-400/30 via-blue-400/20 to-black/80 p-1 rounded-3xl shadow-[0_0_60px_10px_rgba(34,197,94,0.25)] border-2 border-green-400/40 overflow-visible"
           initial={{ scale: 0, rotate: 5 }}
           whileInView={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "backOut" }}
           viewport={{ once: true }}
         >
-          <div className="bg-black/80 backdrop-blur-sm rounded-2xl p-8 text-center relative overflow-hidden">
+          {/* グローエフェクト */}
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-2/3 h-16 bg-green-400/30 blur-2xl rounded-full z-0 pointer-events-none" />
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-16 bg-blue-400/30 blur-2xl rounded-full z-0 pointer-events-none" />
+          <div className="bg-black/90 backdrop-blur-lg rounded-2xl p-10 md:p-14 text-center relative overflow-hidden border border-blue-400/30 shadow-[0_0_40px_5px_rgba(59,130,246,0.10)]">
             {/* Background animated elements */}
             <motion.div
-              className="absolute inset-0 opacity-10"
+              className="absolute inset-0 opacity-20"
               animate={{
                 background: [
-                  "radial-gradient(circle at 20% 50%, #22c55e 0%, transparent 50%)",
-                  "radial-gradient(circle at 80% 50%, #3b82f6 0%, transparent 50%)",
-                  "radial-gradient(circle at 20% 50%, #22c55e 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, #22c55e 0%, transparent 60%)",
+                  "radial-gradient(circle at 80% 50%, #3b82f6 0%, transparent 60%)",
+                  "radial-gradient(circle at 20% 50%, #22c55e 0%, transparent 60%)",
                 ],
               }}
               transition={{
@@ -242,11 +269,15 @@ export default function ServiceHighlightsSection() {
                 ease: "easeInOut",
               }}
             />
-
             <motion.h3
-              className="text-2xl md:text-3xl font-bold mb-4 relative z-10"
+              className="text-2xl md:text-3xl font-bold mb-6 relative z-10 text-white drop-shadow-[0_2px_10px_rgba(34,197,94,0.7)]"
               animate={{
-                scale: [1, 1.05, 1],
+                scale: [1, 1.08, 1],
+                textShadow: [
+                  "0 0 20px #22c55e, 0 0 40px #3b82f6",
+                  "0 0 40px #22c55e, 0 0 80px #3b82f6",
+                  "0 0 20px #22c55e, 0 0 40px #3b82f6",
+                ],
               }}
               transition={{
                 duration: 2,
@@ -255,12 +286,31 @@ export default function ServiceHighlightsSection() {
               }}
             >
               「ここまで全部付いてくるの？」
+              {/* アニメーション付き下線 */}
+              <motion.div
+                className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] w-2/3 h-2 bg-gradient-to-r from-green-400 via-blue-400 to-green-400 rounded-full blur-md opacity-80"
+                animate={{
+                  scaleX: [1, 1.2, 1],
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+              />
             </motion.h3>
-            <p className="text-lg text-gray-300 relative z-10">
-              そう思っていただけるよう、必要なサポートを全て詰め込みました。
+            <motion.p
+              className="text-lg md:text-xl text-gray-100 relative z-10 font-medium drop-shadow-[0_2px_8px_rgba(34,197,94,0.3)]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              本気で形にしたい方のために、必要なサポートはすべて詰め込みました。
               <br />
-              あなたは<span className="text-green-400 font-bold">アイデアを形にすることだけ</span>に集中してください。
-            </p>
+              あなたは<span className="text-green-400 font-bold text-xl drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]">発想と創造に集中すればOK。</span>あとは一緒に伴走します。
+            </motion.p>
           </div>
         </motion.div>
       </motion.div>

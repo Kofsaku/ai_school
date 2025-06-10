@@ -96,7 +96,7 @@ export default function CoreProblemSection() {
               transition={{ duration: 0.5, delay: 0.6 }}
             >
               <span className="mr-3 text-2xl">•</span>
-              <span>ツールは使えるが、何を作れば価値があるのかがわからない</span>
+              <span>何を作れば価値があるのかがわからない</span>
             </motion.li>
             <motion.li 
               className="flex items-start"
@@ -106,7 +106,7 @@ export default function CoreProblemSection() {
               transition={{ duration: 0.5, delay: 0.7 }}
             >
               <span className="mr-3 text-2xl">•</span>
-              <span>ユーザーの課題を深く理解して形にする方法が学べていない</span>
+              <span>ユーザーの本当の課題 を深く理解する方法が見えていない</span>
             </motion.li>
             <motion.li 
               className="flex items-start"
@@ -116,7 +116,7 @@ export default function CoreProblemSection() {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <span className="mr-3 text-2xl">•</span>
-              <span>プロダクトとしての価値提案の作り方がわからない</span>
+              <span>誰のために／どんな価値を届けるか を設計できていない</span>
             </motion.li>
             <motion.li 
               className="flex items-start"
@@ -126,7 +126,17 @@ export default function CoreProblemSection() {
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               <span className="mr-3 text-2xl">•</span>
-              <span>実装ばかり先行して、設計とユーザーフィードバックが不足する</span>
+              <span>作りながら学ぶべきフィードバックサイクル が設計されていない</span>
+            </motion.li>
+            <motion.li 
+              className="flex items-start"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+            >
+              <span className="mr-3 text-2xl">•</span>
+              <span>成長につなげる戦略の描き方がわからない</span>
             </motion.li>
             <motion.li 
               className="flex items-start"
@@ -141,15 +151,22 @@ export default function CoreProblemSection() {
           </motion.ul>
 
           <motion.p 
-            className="text-xl md:text-3xl mt-12 text-green-400"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="text-2xl md:text-4xl mt-16 font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ 
+              duration: 1,
+              delay: 1.2,
+              type: "spring",
+              stiffness: 100
+            }}
           >
-            それは、「プロダクトの作り方」が
-            <br />
-            どこにも教えられていないからです。
+            それは、
+            <br className="mb-8" />
+            <span className="text-3xl md:text-5xl block my-8">「プロダクトの作り方」が</span>
+            <span className="text-3xl md:text-5xl block my-8">どこにも教えられていない</span>
+            <span className="block mt-8">からです。</span>
           </motion.p>
         </div>
       </motion.div>

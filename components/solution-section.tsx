@@ -128,7 +128,9 @@ export default function SolutionSection() {
             }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           >
-            この授業は、"あなたのアイデア"を
+            My first Launchは、
+            <br />
+            "あなたのアイデア"を
             <br />
             実際のプロダクトに変えるための実践プログラムです。
           </motion.h2>

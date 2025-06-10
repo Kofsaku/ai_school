@@ -58,11 +58,10 @@ export default function HeroSection() {
       <div className="absolute w-full h-full">
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full border-4 border-blue-500/30"
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 360],
-          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: [1, 1.1, 1], rotate: [0, 360] }}
           transition={{
+            opacity: { duration: 1, ease: "easeOut" },
             scale: { duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
             rotate: { duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
           }}
@@ -82,33 +81,6 @@ export default function HeroSection() {
             <div className="absolute inset-4 rounded-full bg-gradient-to-br from-green-500/20 to-transparent animate-pulse" />
           </motion.div>
         </motion.div>
-
-        {/* Orbiting elements */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute left-1/2 top-1/2 w-4 h-4 bg-green-400 rounded-full"
-            style={{
-              x: "-50%",
-              y: "-50%",
-            }}
-            animate={{
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-            }}
-          >
-            <div
-              className="w-4 h-4 bg-green-400 rounded-full shadow-lg shadow-green-400/50"
-              style={{
-                transform: `translateX(${120 + i * 40}px)`,
-              }}
-            />
-          </motion.div>
-        ))}
       </div>
 
       <motion.div className="relative z-10 text-center space-y-8 px-4" style={{ y, opacity, scale }}>
@@ -184,6 +156,37 @@ export default function HeroSection() {
       >
         <ChevronDown className="w-8 h-8 text-white opacity-70" />
       </motion.div>
+
+      {/* Orbiting elements */}
+      {[0,1,2,3].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute w-4 h-4"
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+          initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            rotate: 360,
+          }}
+          transition={{
+            opacity: { duration: 1, ease: "easeOut" },
+            scale: { duration: 1, ease: "easeOut" },
+            rotate: { duration: 6 + i * 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
+          }}
+        >
+          <div
+            className="w-4 h-4 bg-green-400 rounded-full shadow-lg shadow-green-400/50"
+            style={{
+              transform: `translateX(${110 + i * 30}px)`
+            }}
+          />
+        </motion.div>
+      ))}
     </section>
   )
 }

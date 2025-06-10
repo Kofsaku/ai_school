@@ -142,50 +142,64 @@ export default function ProblemSection() {
           viewport={{ once: true }}
         >
           <motion.p
-            className="text-xl md:text-2xl font-medium"
+            className="text-xl md:text-2xl font-medium text-white"
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           >
             でも…
           </motion.p>
+          <motion.div className="space-y-6">
+            <motion.p
+              className="text-xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              「アイデアの事業化の方法がわからない」
+            </motion.p>
+            <motion.p
+              className="text-xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              「いつまでもリリースできない」
+            </motion.p>
+            <motion.p
+              className="text-xl md:text-3xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              「事業の方向性が不明確」
+            </motion.p>
+            <motion.p
+              className="text-xl md:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              「ユーザーフィードバックの活用法がわからない」
+            </motion.p>
+            <motion.p
+              className="text-xl md:text-3xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
+              viewport={{ once: true }}
+            >
+              「ローンチまでの道筋が見えない」
+            </motion.p>
+          </motion.div>
+
+          <div className="h-[40px]" />
+
           <motion.p
-            className="text-2xl md:text-4xl font-bold text-green-400"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: "backOut" }}
-            viewport={{ once: true }}
-          >
-            「どうやってサービスとして形にすればいいかわからなかった」
-          </motion.p>
-          <motion.p
-            className="text-2xl md:text-4xl font-bold text-green-400"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
-            viewport={{ once: true }}
-          >
-            「途中まで作ったが事業としての方向性が見えなかった」
-          </motion.p>
-          <motion.p
-            className="text-2xl md:text-4xl font-bold text-green-400"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
-            viewport={{ once: true }}
-          >
-            「ユーザーの声をどう取り入れればいいか迷った」
-          </motion.p>
-          <motion.p
-            className="text-2xl md:text-4xl font-bold text-green-400"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 1, duration: 0.8, ease: "backOut" }}
-            viewport={{ once: true }}
-          >
-            「ローンチまでのステップがわからず挫折してしまった」
-          </motion.p>
-          <motion.p
-            className="text-xl md:text-2xl mt-8"
+            className="text-xl md:text-2xl text-white font-semibold"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
