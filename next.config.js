@@ -37,9 +37,7 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : undefined,
   // ビルド最適化
   webpack: (config, { dev, isServer }) => {
-    // 本番環境での最適化
     if (!dev && !isServer) {
-      // チャンクの分割を最適化
       config.optimization.splitChunks = {
         chunks: 'all',
         minSize: 20000,
@@ -58,20 +56,34 @@ const nextConfig = {
             priority: -20,
             reuseExistingChunk: true,
           },
-          // アニメーション関連のチャンクを分離
           animations: {
             test: /[\\/]node_modules[\\/](framer-motion|lucide-react)[\\/]/,
             name: 'animations',
             priority: 20,
             reuseExistingChunk: true,
           },
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            priority: 30,
+            reuseExistingChunk: true,
+          },
+          next: {
+            test: /[\\/]node_modules[\\/]next[\\/]/,
+            name: 'next',
+            priority: 25,
+            reuseExistingChunk: true,
+          }
         },
       }
+
+      // 最適化設定
+      config.optimization.minimize = true
+      config.optimization.minimizer = config.optimization.minimizer || []
     }
 
     return config
   },
 }
 
-module.exports = nextConfig 
 module.exports = nextConfig 

@@ -88,21 +88,14 @@ export const animations: Record<string, Variants> = {
   },
   rocketAnimation: {
     initial: {
-      x: "-100px",
+      x: -100,
       y: "80vh",
       scale: 0.5,
     },
     animate: {
-      x: ["calc(100vw + 100px)"],
-      y: ["-100px"],
+      x: "100vw",
+      y: -100,
       scale: [0.5, 1, 0.8, 0.3],
-    },
-    transition: {
-      duration: 8,
-      ease: "easeInOut",
-      times: [0, 0.3, 0.7, 1],
-      repeat: Infinity,
-      repeatDelay: 2
     }
   }
 }
